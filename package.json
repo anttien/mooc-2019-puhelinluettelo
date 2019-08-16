@@ -8,7 +8,7 @@
     "watch": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../moocfullstack/osa2/puhelinluettelo-frontend && npm run build --prod && cp -r build ../../../mooc-puhelinluettelo-backend/",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",    
     "logs:prod": "heroku logs --tail"
     
   },
