@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 morgan.token('requestBody', function getRequestBody(req) {
     return JSON.stringify(req.body)
@@ -8,6 +9,9 @@ morgan.token('requestBody', function getRequestBody(req) {
 
 const app = express()
 app.use(bodyParser.json())
+app.use(cors())
+
+
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :requestBody', {
     skip: function (req, res) { return req.method != 'POST' }
 }))
