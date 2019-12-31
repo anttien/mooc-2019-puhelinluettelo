@@ -8,9 +8,8 @@
     "watch": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ../moocfullstack/osa2/puhelinluettelo-frontend && npm run build --prod && cp -r build ../../../mooc-puhelinluettelo-backend/",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "logs:prod": "heroku logs --tail"
-    
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,9 @@
   "homepage": "https://github.com/anttien/mooc-2019-puhelinluettelo#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "mongoose": "^5.6.10",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
