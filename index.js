@@ -49,7 +49,7 @@ app.get('/api/persons', (req, res) => {
     })
 })
 
-app.get('/api/persons/:id', (req, res) => {
+app.get('/api/persons/:id', (req, res, next) => {
     Person.findById(req.params.id).then(person => {
         if (person) {
             res.json(person.toJSON())
@@ -103,14 +103,15 @@ const errorHandler = (error, request, response, next) => {
     next(error)
 }
 
-app.use(errorHandler)
-
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
 
 // olemattomien osoitteiden käsittely
 app.use(unknownEndpoint)
+
+// virheellisten pyyntöjen käsittely
+app.use(errorHandler)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
